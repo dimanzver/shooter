@@ -6,6 +6,8 @@ TagManager:
   tags:
   - shotPointStart
   - ShootPointCenter
+  - player
+  - enemy
   layers:
   - Default
   - TransparentFX
@@ -30,7 +32,7 @@ TagManager:
   - Player
   - Surface
   - bg
-  - 
+  - Human
   - 
   - 
   - 

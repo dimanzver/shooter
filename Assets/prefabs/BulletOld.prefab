@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a8138b7c9426592b9d0e1bfa42fbde1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RB: {fileID: 0}
-  Renderer: {fileID: 0}
-  Trail: {fileID: 0}
+  RB: {fileID: 50310933454401060}
+  Renderer: {fileID: 212387060323163966}
+  Trail: {fileID: 96146899799439990}
   SparkType: 0

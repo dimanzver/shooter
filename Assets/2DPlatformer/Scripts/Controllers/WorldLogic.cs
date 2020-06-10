@@ -55,7 +55,7 @@ public class WorldLogic : Singleton<WorldLogic> {
 			Bullets.Add(bullet);
 		}
 
-		bullet.InitBullet(startPos, direction, speedBullet, powerBullet, damageBullet, lifeTime, collidedMask);
+		//bullet.InitBullet(startPos, direction, speedBullet, powerBullet, damageBullet, lifeTime, collidedMask);
 	}
 
 	/// <summary> Create Ray bullet logic and visual </summary>
@@ -78,7 +78,7 @@ public class WorldLogic : Singleton<WorldLogic> {
 			RayBullets.Add(rayBullet);
 		}
 
-		rayBullet.InitBullet(startPos, direction, speedBullet, powerBullet, damageBullet, lifeTime, collidedMask, color);
+		//rayBullet.InitBullet(startPos, direction, speedBullet, powerBullet, damageBullet, lifeTime, collidedMask, color);
 	}
 
 	/// <summary> Create grenade logic and visual </summary>

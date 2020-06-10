@@ -1,29 +1,23 @@
 ﻿using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Human
 {
-    public float speed = 10f;
-    protected Rigidbody2D rb;
-    protected BoxCollider2D boxCollider;
-    [SerializeField] protected LayerMask groundLayermask;
-    protected GameObject shotPointCenter;
-    public GameObject controls;
     public GameObject fireAim;
-    public bool flipped = false;
 
     protected Vector3 aimPosCached;
+    protected Rigidbody2D rb;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
-        shotPointCenter = GameObject.FindGameObjectWithTag("ShootPointCenter");
+        base.Start();
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         aimPosCached = fireAim.transform.position;
         move();
         //jump
@@ -37,28 +31,8 @@ public class PlayerController : MonoBehaviour
 
     void rotateToCursor()
     {
-        /*Vector3 mousePos = getMousePosition();
-        Vector3 diff = mousePos - shotPointCenter.transform.position;
-        float z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
-        float s = Mathf.Sqrt(diff.y * diff.y + diff.x * diff.x);
-        if (s < 1)
-            return;*/
-        //Debug.Log(z);
-        //controls.transform.rotation = Quaternion.Euler(0f, 0f, z);
         float angle = getFireAngle();
-        if (angle > 90 || angle < -90)
-        {
-            flip(true);
-            angle = angle > 90 ?
-                     angle - 180 :
-                     180 + angle;
-        }
-        else
-        {
-            flip(false);
-        }
-
-        controls.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        rotateTo(angle);
     }
 
     Vector3 getMousePosition()
@@ -68,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
     float getFireAngle()
     {
-        Vector3 pos = shotPointCenter.transform.position;
+        Vector3 pos = shootPointCenter.transform.position;
         Vector3 diff = aimPosCached - pos;
         float angle = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
         return angle;
@@ -80,26 +54,20 @@ public class PlayerController : MonoBehaviour
             return;
 
         float angle = getFireAngle();
-        Debug.Log(angle);
-        /*
-        Vector2 pos = getMousePosition();
-        Vector3 startPos = shotPointCenter.transform.position;
-        float deltaX = pos.x - startPos.x;
-        float deltaY = pos.y - startPos.y;*/
-        //Debug.Log(Math.Atan(deltaY / deltaX) * 180.0 / Math.PI);
+        shoot(angle, "player");
     }
 
     void move()
     {
         float moveX = Input.GetAxis("Horizontal");
-        if(moveX < 0)
+        /*if(moveX < 0)
         {
             flip(true);
         }
         else if(moveX > 0)
         {
             flip(false);
-        }
+        }*/
         rb.MovePosition(rb.position + Vector2.right * moveX * speed * Time.deltaTime);
     }
 
@@ -109,9 +77,8 @@ public class PlayerController : MonoBehaviour
         return hit.collider != null;
     }
 
-    protected void flip(bool isFlip)
+    /*protected void flip(bool isFlip)
     {
         transform.localScale = new Vector3(isFlip ? -1 : 1, 1, 1);
-        flipped = isFlip;
-    }
+    }*/
 }
