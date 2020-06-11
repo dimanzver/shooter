@@ -19,6 +19,13 @@ public class PlayerController : Human
     {
         if (Game.paused)
             return;
+
+        if(health <= 0)
+        {
+            Game.end();
+            return;
+        }
+
         base.Update();
         aimPosCached = fireAim.transform.position;
         move();

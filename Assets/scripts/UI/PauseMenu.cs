@@ -20,4 +20,14 @@ public class PauseMenu : MonoBehaviour
     {
         Game.play();
     }
+
+    public void newGame()
+    {
+        Game.newGame();
+    }
+
+    public void exit()
+    {
+        Application.Quit();
+    }
 }

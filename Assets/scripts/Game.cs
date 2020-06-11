@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class Game : MonoBehaviour
 {
     public static bool paused = false;
 
     protected static GameObject pauseMenu;
+    protected static GameObject endGameMenu;
 
     void Start()
     {
-        pauseMenu = GameObject.Find("PauseMenu");
         play();
     }
 
@@ -37,13 +39,31 @@ public class Game : MonoBehaviour
     {
         paused = false;
         Time.timeScale = 1;
-        pauseMenu.SetActive(false);
+        if(pauseMenu)
+            Destroy(pauseMenu);
+        if (endGameMenu)
+            Destroy(endGameMenu);
     }
 
     public static void pause()
     {
         paused = true;
         Time.timeScale = 0;
-        pauseMenu.SetActive(true);
+        var pauseMenuPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/prefabs/PauseMenu.prefab");
+        pauseMenu = Instantiate(pauseMenuPrefab, Vector3.zero, Quaternion.identity).gameObject;
+    }
+
+    public static void end()
+    {
+        paused = true;
+        Time.timeScale = 0;
+        var endGameMenuPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/prefabs/GameEndMenu.prefab");
+        endGameMenu = Instantiate(endGameMenuPrefab, Vector3.zero, Quaternion.identity).gameObject;
+    }
+
+    public static void newGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        play();
     }
 }
