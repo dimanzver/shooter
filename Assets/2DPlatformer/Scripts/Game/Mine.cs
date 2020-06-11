@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary> Mine in world object</summary>
-public class Mine : MonoBehaviour, IDamageable, ISwitch {
+public class MineOld : MonoBehaviour, IDamageable, ISwitch {
 
 	[SerializeField] LayerMask DitonateMask;		//Objects that can cause dithonation
 	[SerializeField] LayerMask DamageMask;			//Objects that will receive damage

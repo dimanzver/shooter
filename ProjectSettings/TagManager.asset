@@ -8,6 +8,7 @@ TagManager:
   - ShootPointCenter
   - player
   - enemy
+  - ground
   layers:
   - Default
   - TransparentFX

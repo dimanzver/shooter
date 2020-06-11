@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary> Horizontal and vertical lift </summary>
-public class Lift : MonoBehaviour {
+public class LiftOld : MonoBehaviour {
 
 	[SerializeField] Transform TargetPoint;
 

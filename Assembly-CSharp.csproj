@@ -127,9 +127,11 @@
      <Compile Include="Assets\scripts\Health.cs" />
      <Compile Include="Assets\scripts\HealthScale.cs" />
      <Compile Include="Assets\scripts\Human.cs" />
+     <Compile Include="Assets\scripts\Lift.cs" />
+     <Compile Include="Assets\scripts\LiftControl.cs" />
+     <Compile Include="Assets\scripts\Mine.cs" />
      <Compile Include="Assets\scripts\PauseMenu.cs" />
      <Compile Include="Assets\scripts\PlayerController.cs" />
-     <Compile Include="Assets\scripts\WorldMouseHandler.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>/home/diman/2D Shooter/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
