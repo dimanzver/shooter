@@ -19,6 +19,8 @@ public class Enemy : Human
     // Update is called once per frame
     protected override void Update()
     {
+        if (Game.paused)
+            return;
         base.Update();
         if (health <= 0f)
         {

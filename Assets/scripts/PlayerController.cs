@@ -17,6 +17,8 @@ public class PlayerController : Human
     // Update is called once per frame
     protected override void Update()
     {
+        if (Game.paused)
+            return;
         base.Update();
         aimPosCached = fireAim.transform.position;
         move();
@@ -60,14 +62,6 @@ public class PlayerController : Human
     void move()
     {
         float moveX = Input.GetAxis("Horizontal");
-        /*if(moveX < 0)
-        {
-            flip(true);
-        }
-        else if(moveX > 0)
-        {
-            flip(false);
-        }*/
         rb.MovePosition(rb.position + Vector2.right * moveX * speed * Time.deltaTime);
     }
 
@@ -76,9 +70,4 @@ public class PlayerController : Human
         RaycastHit2D hit = Physics2D.Raycast(boxCollider.bounds.center, Vector2.down, boxCollider.bounds.extents.y + .1f, groundLayermask);
         return hit.collider != null;
     }
-
-    /*protected void flip(bool isFlip)
-    {
-        transform.localScale = new Vector3(isFlip ? -1 : 1, 1, 1);
-    }*/
 }

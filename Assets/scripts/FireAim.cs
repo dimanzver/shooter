@@ -14,6 +14,8 @@ public class FireAim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Game.paused)
+            return;
         if(Input.mousePosition != mousePos)
         {
             mousePos = Input.mousePosition;
