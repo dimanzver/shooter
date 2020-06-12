@@ -66,4 +66,9 @@ public class Game : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         play();
     }
+
+    public static void nextLevel()
+    {
+        Debug.Log("Next Level");
+    }
 }

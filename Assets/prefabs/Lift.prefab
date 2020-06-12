@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 370911850456768666}
   - component: {fileID: 370911850456768669}
   - component: {fileID: 370911850456768667}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Lift
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,16 +303,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7234108775880342199, guid: b6ef8d030cdfc281cb4bbde1df40b207,
-        type: 3}
-      propertyPath: lift
-      value: 
-      objectReference: {fileID: 370911850951402991}
     - target: {fileID: 7234108777405905265, guid: b6ef8d030cdfc281cb4bbde1df40b207,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7234108775880342199, guid: b6ef8d030cdfc281cb4bbde1df40b207,
+        type: 3}
+      propertyPath: lift
+      value: 
+      objectReference: {fileID: 370911850951402991}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6ef8d030cdfc281cb4bbde1df40b207, type: 3}
 --- !u!4 &7007893242049063640 stripped
@@ -388,16 +388,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7234108775880342199, guid: b6ef8d030cdfc281cb4bbde1df40b207,
-        type: 3}
-      propertyPath: lift
-      value: 
-      objectReference: {fileID: 370911850951402991}
     - target: {fileID: 7234108777405905265, guid: b6ef8d030cdfc281cb4bbde1df40b207,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 7234108775880342199, guid: b6ef8d030cdfc281cb4bbde1df40b207,
+        type: 3}
+      propertyPath: lift
+      value: 
+      objectReference: {fileID: 370911850951402991}
     - target: {fileID: 7234108777405905264, guid: b6ef8d030cdfc281cb4bbde1df40b207,
         type: 3}
       propertyPath: m_SortingOrder
