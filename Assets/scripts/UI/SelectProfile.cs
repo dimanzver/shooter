@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SelectProfile : MonoBehaviour
 {
@@ -80,8 +81,9 @@ public class SelectProfile : MonoBehaviour
 
     protected void selectProfile(string name)
     {
-        Profile.getProfile(newProfileName);
-        //TODO: open levels scene
+        Profile.getProfile(name);
+        Profile.setProfile(name);
+        SceneManager.LoadScene("Scenes/Levels");
     }
 
     // Update is called once per frame

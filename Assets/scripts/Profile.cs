@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 public class Profile
 {
     [JsonProperty]
-    public List<int> finishedLevels = new List<int> { };
+    public Dictionary<int, int> finishedLevels = new Dictionary<int, int> { };
     [JsonProperty]
     public string name;
 
@@ -20,9 +20,15 @@ public class Profile
         this.name = name;
     }
 
-    public void addLevel(int level)
+    public void addLevel(int level, int result)
     {
-        finishedLevels.Add(level);
+        int oldResult = 0;
+        if(finishedLevels.TryGetValue(level, out oldResult))
+        {
+            if (oldResult > result)
+                result = oldResult;
+        }
+        finishedLevels[level] = result;
         setProfiles(profilesDict);
     }
 

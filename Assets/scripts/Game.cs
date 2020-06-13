@@ -71,4 +71,9 @@ public class Game : MonoBehaviour
     {
         Debug.Log("Next Level");
     }
+
+    public static void startLevel(int level)
+    {
+        SceneManager.LoadScene("Scenes/Level " + level);
+    }
 }

@@ -18,6 +18,12 @@ EditorBuildSettings:
     path: Assets/2DPlatformer/Scenes/MainMenuScene.unity
     guid: 57185a2dae9f2f04baf5629d7fd3a173
   - enabled: 1
+    path: Assets/Scenes/Profile.unity
+    guid: 0ac8b047080d3ccfea6af80c685543b1
+  - enabled: 1
+    path: Assets/Scenes/Levels.unity
+    guid: 1bf876a8ff40a1e3b9a7fb32eb73c7d0
+  - enabled: 1
     path: Assets/Scenes/Level 1.unity
     guid: 8f33f39aac33fdc95b70a989f67b3718
   m_configObjects: {}
