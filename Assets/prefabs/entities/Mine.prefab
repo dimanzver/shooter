@@ -221,6 +221,8 @@ MonoBehaviour:
   damage: 5
   radius: 3
   force: 10000
+  explosionPrefab: {fileID: 7757453467476088451, guid: 771da292fc81c3db496f924a40867b3a,
+    type: 3}
 --- !u!61 &6533009299525969500
 BoxCollider2D:
   m_ObjectHideFlags: 0

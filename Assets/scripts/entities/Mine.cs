@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class Mine : MonoBehaviour
 {
@@ -6,6 +7,7 @@ public class Mine : MonoBehaviour
     public float damage = 5f;
     public float radius = 2f;
     public float force = 4000f;
+    [SerializeField] protected Transform explosionPrefab;
 
     protected TextMesh text;
 
@@ -62,6 +64,7 @@ public class Mine : MonoBehaviour
             }
         }
 
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEditor;
+using System;
 
 public class Game : MonoBehaviour
 {
     public static bool paused = false;
+    public const int levels = 10;
 
     protected static GameObject pauseMenu;
     protected static GameObject endGameMenu;
@@ -67,13 +69,33 @@ public class Game : MonoBehaviour
         play();
     }
 
-    public static void nextLevel()
+    public static void endLevel()
     {
-        Debug.Log("Next Level");
+        paused = true;
+        GameObject player = GameObject.Find("Player");
+        PlayerController playerScript = player.GetComponent<PlayerController>();
+        float healthRel = playerScript.health / playerScript.maxHealth;
+        int stars = healthRel >= 0.7 ? 
+                    3 :
+                    (healthRel >= 0.4 ? 2 : 1);
+        Profile profile = Profile.getProfile();
+        int level = Convert.ToInt32(SceneManager.GetActiveScene().name.Replace("Level ", ""));
+        profile.setLevel(level, stars);
+        openLevelResults(level, stars);
     }
 
     public static void startLevel(int level)
     {
         SceneManager.LoadScene("Scenes/Level " + level);
+    }
+
+    static void openLevelResults(int level, int stars)
+    {
+        var levelResultsPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/prefabs/LevelResults.prefab");
+        GameObject levelResults = Instantiate(levelResultsPrefab).gameObject;
+        LevelResults levelResultsScript = levelResults.GetComponent<LevelResults>();
+        levelResultsScript.level = level;
+        levelResultsScript.stars = stars;
+        levelResultsScript.init();
     }
 }

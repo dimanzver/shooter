@@ -15,7 +15,8 @@ public class NextLevelDoor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        checkPlayerNearly();
+        if(!Game.paused)
+            checkPlayerNearly();
     }
 
     void checkPlayerNearly()
@@ -25,6 +26,6 @@ public class NextLevelDoor : MonoBehaviour
         if (s > actionRadius)
             return;
 
-        Game.nextLevel();
+        Game.endLevel();
     }
 }

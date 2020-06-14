@@ -20,7 +20,7 @@ public class Profile
         this.name = name;
     }
 
-    public void addLevel(int level, int result)
+    public void setLevel(int level, int result)
     {
         int oldResult = 0;
         if(finishedLevels.TryGetValue(level, out oldResult))
@@ -48,7 +48,7 @@ public class Profile
             profileName = getCurrentProfileName();
         if (string.IsNullOrEmpty(profileName))
             return null;
-
+        
         Dictionary<string, Profile> profiles = getProfiles();
         if (!profiles.ContainsKey(profileName))
             return registerProfile(profileName);
