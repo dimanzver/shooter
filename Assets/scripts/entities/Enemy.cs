@@ -110,7 +110,7 @@ public class Enemy : Human
         }*/
 
         Vector3 playerPos = player.transform.position;
-        Vector3 pos = transform.position;
+        Vector3 pos = shootPointCenter.transform.position;
         Vector3 diff = playerPos - pos;
         float s = Mathf.Sqrt(diff.x * diff.x + diff.y * diff.y);
 
