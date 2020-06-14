@@ -35,8 +35,10 @@ public class Mine : MonoBehaviour
         text.text = timeText;
     }
 
+    //взрыв мины
     public void blow()
     {
+        //получаем объекты рядом с миной
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
         foreach(Collider2D hit in colliders)
         {
@@ -50,6 +52,7 @@ public class Mine : MonoBehaviour
             float relativeForce = -force * (radius - s) / radius;
             hit.attachedRigidbody.AddForce(direction.normalized * relativeForce);
 
+            //наносим урон стоящим рядом игрокам
             if (hit.CompareTag("enemy"))
             {
                 Enemy enemy = hit.GetComponent<Enemy>();
@@ -64,10 +67,12 @@ public class Mine : MonoBehaviour
             }
         }
 
+        //показываем анимацию взрыва и уничтожаем мину
         Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
+    //при столкновении с объектами взрываем мину
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.Layer() == LayerMask.NameToLayer("Surface"))

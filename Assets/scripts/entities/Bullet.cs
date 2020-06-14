@@ -38,6 +38,7 @@ public class Bullet : MonoBehaviour
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, transform.position, 0.1f);
         foreach(RaycastHit2D hit in hits)
         {
+            //пуля сталкивается только с поверхностью, игроками, минами
             int hitLayer = hit.collider.Layer();
             if (
                 hitLayer != LayerMask.NameToLayer("Surface") &&
@@ -50,6 +51,7 @@ public class Bullet : MonoBehaviour
             if (hit.collider.CompareTag(fromTag))
                 continue;
 
+            //если это мина, то взрываем её
             if(hitLayer == LayerMask.NameToLayer("mine"))
             {
                 Mine mine = hit.collider.GetComponent<Mine>();
@@ -57,6 +59,7 @@ public class Bullet : MonoBehaviour
             }
             else
             {
+                //иначе наносим урон
                 if (fromTag == "player")
                 {
                     Enemy enemy = hit.collider.GetComponent<Enemy>();

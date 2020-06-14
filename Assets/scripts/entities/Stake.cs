@@ -16,6 +16,7 @@ public class Stake : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //убиваем игрока, задевшего колючки
         if (collision.collider.CompareTag("player"))
         {
             PlayerController playerScript = collision.collider.GetComponent<PlayerController>();

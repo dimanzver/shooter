@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PauseMenu : MonoBehaviour
 {
@@ -27,5 +29,10 @@ public class PauseMenu : MonoBehaviour
     public void exit()
     {
         Application.Quit();
+    }
+
+    public void toLevelsMap()
+    {
+        SceneManager.LoadScene("Scenes/Levels");
     }
 }

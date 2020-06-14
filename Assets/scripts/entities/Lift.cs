@@ -27,6 +27,7 @@ public class Lift : MonoBehaviour
 
     void move()
     {
+        //движемся до тех пор, пока не достигнем конечной точки
         if (direction == 0)
             return;
         float remain = getMoveRemain();
@@ -48,6 +49,7 @@ public class Lift : MonoBehaviour
         nextDirection *= -1;
     }
 
+    //узнаем, сколько осталось двигаться до конечной точки
     float getMoveRemain()
     {
         if (direction == 0)

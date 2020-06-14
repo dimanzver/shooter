@@ -31,6 +31,7 @@ public class Human : MonoBehaviour
         updateHealthScale();
     }
 
+    //обновление шкалы здоровья
     protected void updateHealthScale()
     {
         healthScale.transform.localScale = new Vector3(direction, 1, 1);
@@ -39,6 +40,7 @@ public class Human : MonoBehaviour
         healthScaleScript.maxHealth = maxHealth;
     }
 
+    //поворот головы на нужный угол
     protected void rotateTo(float angle)
     {
         if (angle > 90 || angle < -90)
@@ -56,6 +58,7 @@ public class Human : MonoBehaviour
         controls.transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 
+    //стреляем под определенным углом
     protected void shoot(float angle, string fromTag)
     {
         Vector3 cameraPos = Camera.main.WorldToScreenPoint(shootPointStart.transform.position);

@@ -16,6 +16,7 @@ public class Health : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        //проверяем пересечение с игроком, если есть, увеличиваем здоровье
         if (other.CompareTag("player"))
         {
             PlayerController playerScript = other.GetComponent<PlayerController>();

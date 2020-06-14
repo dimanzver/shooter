@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class LevelsMap : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class LevelsMap : MonoBehaviour
         Profile profile = Profile.getProfile();
         if(profile == null)
         {
-            SceneManager.LoadScene("Scenes/Profile");
+            toProfile();
             return;
         }
         updateMap();
@@ -18,8 +19,12 @@ public class LevelsMap : MonoBehaviour
 
     void updateMap()
     {
+        //обновляем имя игрока
         Profile profile = Profile.getProfile();
+        GameObject profileNameObj = GameObject.Find("profileName");
+        profileNameObj.GetComponent<Text>().text = profile.name;
 
+        //обновляем карту
         GameObject[] mapItems = GameObject.FindGameObjectsWithTag("mapItem");
         int maxLevelFinished = 0;
         foreach(KeyValuePair<int, int> item in profile.finishedLevels)
@@ -41,5 +46,15 @@ public class LevelsMap : MonoBehaviour
 
             mapItemObj.init();
         }
+    }
+
+    public void toProfile()
+    {
+        SceneManager.LoadScene("Scenes/Profile");
+    }
+
+    public void exit()
+    {
+        Application.Quit();
     }
 }

@@ -22,6 +22,7 @@ public class SelectProfile : MonoBehaviour
         updateList();
     }
 
+    //обновляем список профилей
     void updateList()
     {
         clearList();

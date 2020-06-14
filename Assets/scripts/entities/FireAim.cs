@@ -25,6 +25,7 @@ public class FireAim : MonoBehaviour
 
     void move()
     {
+        //ставим прицел на позицию мыши
         Vector3 mouseWorldPos = getMouseWorldPosition();
         Vector3 diff = mouseWorldPos - shootPointCenter.transform.position;
         if (Mathf.Abs(diff.y) < 1 && Mathf.Abs(diff.x) < 1)

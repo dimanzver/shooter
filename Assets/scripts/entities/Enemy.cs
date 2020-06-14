@@ -38,6 +38,7 @@ public class Enemy : Human
         if (!moving)
             return;
 
+        //при необходимости поворачиваемся в другую сторону
         if (checkNeedFlip())
         {
             flip(-direction);
@@ -109,6 +110,7 @@ public class Enemy : Human
             return;
         }*/
 
+        //откладываем вектор к игроку
         Vector3 playerPos = player.transform.position;
         Vector3 pos = shootPointCenter.transform.position;
         Vector3 diff = playerPos - pos;
@@ -131,6 +133,7 @@ public class Enemy : Human
 
     void tryShoot(float angle)
     {
+        //стреляем через определенный отрезок времени
         if(fireTimeout > 0)
         {
             fireTimeout -= Time.deltaTime;

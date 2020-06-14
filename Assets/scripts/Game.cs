@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEditor;
 using System;
 
 public class Game : MonoBehaviour
@@ -51,7 +50,7 @@ public class Game : MonoBehaviour
     {
         paused = true;
         Time.timeScale = 0;
-        var pauseMenuPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/prefabs/PauseMenu.prefab");
+        var pauseMenuPrefab = Resources.Load<GameObject>("PauseMenu");
         pauseMenu = Instantiate(pauseMenuPrefab, Vector3.zero, Quaternion.identity).gameObject;
     }
 
@@ -59,7 +58,7 @@ public class Game : MonoBehaviour
     {
         paused = true;
         Time.timeScale = 0;
-        var endGameMenuPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/prefabs/GameEndMenu.prefab");
+        var endGameMenuPrefab = Resources.Load<GameObject>("GameEndMenu");
         endGameMenu = Instantiate(endGameMenuPrefab, Vector3.zero, Quaternion.identity).gameObject;
     }
 
@@ -69,6 +68,7 @@ public class Game : MonoBehaviour
         play();
     }
 
+    //заканчиваем уровень, записываем результаты, показываем окно
     public static void endLevel()
     {
         paused = true;
@@ -91,7 +91,7 @@ public class Game : MonoBehaviour
 
     static void openLevelResults(int level, int stars)
     {
-        var levelResultsPrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/prefabs/LevelResults.prefab");
+        var levelResultsPrefab = Resources.Load<GameObject>("LevelResults");
         GameObject levelResults = Instantiate(levelResultsPrefab).gameObject;
         LevelResults levelResultsScript = levelResults.GetComponent<LevelResults>();
         levelResultsScript.level = level;

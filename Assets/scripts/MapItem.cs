@@ -15,6 +15,7 @@ public class MapItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         Button button = GetComponent<Button>();
         button.onClick.AddListener(delegate() {
             Game.startLevel(level);
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         });
     }
 

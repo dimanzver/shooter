@@ -20,7 +20,10 @@ public class LiftControl : MonoBehaviour
     void Update()
     {
         checkPlayerNearly();
+        //если можно использовать лифт, то показываем это
         usingSprite.sortingOrder = mayUse ? 1 : -1;
+
+        //если можно использовать лифт и нажата клавиша E
         if (mayUse)
         {
             if (Input.GetKeyDown(KeyCode.E))
