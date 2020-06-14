@@ -130,6 +130,7 @@
      <Compile Include="Assets\scripts\entities\LiftControl.cs" />
      <Compile Include="Assets\scripts\entities\Mine.cs" />
      <Compile Include="Assets\scripts\entities\PlayerController.cs" />
+     <Compile Include="Assets\scripts\entities\Stake.cs" />
      <Compile Include="Assets\scripts\Game.cs" />
      <Compile Include="Assets\scripts\LevelsMap.cs" />
      <Compile Include="Assets\scripts\LocalStorage.cs" />

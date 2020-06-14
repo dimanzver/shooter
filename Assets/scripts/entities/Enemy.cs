@@ -3,6 +3,7 @@
 public class Enemy : Human
 {
     public float rechargeTime = 1f;
+    [SerializeField] protected LayerMask mineLayermask;
 
     protected bool moving = true;
     protected float fireTimeout = 0f;
@@ -36,13 +37,53 @@ public class Enemy : Human
     {
         if (!moving)
             return;
-        RaycastHit2D hit = Physics2D.Raycast(boxCollider.bounds.center, new Vector2(direction, 0), boxCollider.bounds.extents.x * 2, groundLayermask);
-        if(hit.collider != null)
+
+        if (checkNeedFlip())
         {
             flip(-direction);
         }
 
-        transform.Translate(Vector3.right * direction * speed);
+        if(checkMayMoveInDirection(direction))
+            transform.Translate(Vector3.right * direction * speed);
+    }
+
+    bool checkNeedFlip()
+    {
+        //проверяем невозможность двигаться дальше и возможность двигаться в обратную сторону
+        return !checkMayMoveInDirection(direction) && checkMayMoveInDirection(-direction, 2f);
+    }
+
+    bool checkMayMoveInDirection(int moveDirection, float multiplier = 1f)
+    {
+        //если при движении по заданному направлению будут препятствия, то двигаться нельзя
+        RaycastHit2D hit = Physics2D.Raycast(
+            boxCollider.bounds.center, 
+            new Vector2(moveDirection, 0),
+            boxCollider.bounds.extents.x * multiplier * 2, 
+            groundLayermask
+        );
+        if (hit.collider != null)
+            return false;
+
+        //если при движении по заданному направлению будут мины, то двигаться нельзя
+        RaycastHit2D minesHit = Physics2D.Raycast(
+                        boxCollider.bounds.center + Vector3.down * boxCollider.bounds.extents.y / 2,
+                        new Vector2(moveDirection, 0),
+                        boxCollider.bounds.extents.x * multiplier * 2,
+                        mineLayermask
+                    );
+        if (minesHit.collider != null)
+            return false;
+
+        //проверяем наличие дальше пустоты
+        Vector3 startEmptyHit = boxCollider.bounds.center + new Vector3(boxCollider.bounds.extents.x * moveDirection, 0, 0);
+        RaycastHit2D notEmptyHit = Physics2D.Raycast(startEmptyHit, Vector2.down, boxCollider.bounds.extents.y * 2, groundLayermask);
+
+        //двигаться можно, если дальше есть земля
+        if (notEmptyHit.collider == null)
+            return false;
+
+        return true;
     }
 
     void OnBecameVisible()
@@ -62,11 +103,11 @@ public class Enemy : Human
 
     void tryFindPlayer()
     {
-        if (!enabledObj)
+        /*if (!enabledObj)
         {
             moving = true;
             return;
-        }
+        }*/
 
         Vector3 playerPos = player.transform.position;
         Vector3 pos = transform.position;

@@ -33,7 +33,7 @@ public class Mine : MonoBehaviour
         text.text = timeText;
     }
 
-    void blow()
+    public void blow()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
         foreach(Collider2D hit in colliders)
@@ -67,7 +67,7 @@ public class Mine : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("ground"))
+        if (collision.collider.Layer() == LayerMask.NameToLayer("Surface"))
             return;
         blow();
     }

@@ -438,6 +438,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2097152
   rechargeTime: 1
+  mineLayermask:
+    serializedVersion: 2
+    m_Bits: 16777216
 --- !u!23 &6852299904444191500
 MeshRenderer:
   m_ObjectHideFlags: 0

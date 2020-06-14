@@ -38,24 +38,41 @@ public class Bullet : MonoBehaviour
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, transform.position, 0.1f);
         foreach(RaycastHit2D hit in hits)
         {
-            if (hit.collider.Layer() != LayerMask.NameToLayer("Surface") && hit.collider.Layer() != LayerMask.NameToLayer("Human"))
+            int hitLayer = hit.collider.Layer();
+            if (
+                hitLayer != LayerMask.NameToLayer("Surface") &&
+                hitLayer != LayerMask.NameToLayer("Human") &&
+                hitLayer != LayerMask.NameToLayer("mine")
+            )
                 continue;
+
 
             if (hit.collider.CompareTag(fromTag))
                 continue;
 
-            if(fromTag == "player")
+            if(hitLayer == LayerMask.NameToLayer("mine"))
             {
-                Enemy enemy = hit.collider.GetComponent<Enemy>();
-                if(enemy)
-                    enemy.health -= damage;
-            }else if(fromTag == "enemy")
-            {
-                PlayerController player = hit.collider.GetComponent<PlayerController>();
-                if (player)
-                    player.health -= damage;
+                Mine mine = hit.collider.GetComponent<Mine>();
+                mine.blow();
             }
+            else
+            {
+                if (fromTag == "player")
+                {
+                    Enemy enemy = hit.collider.GetComponent<Enemy>();
+                    if (enemy)
+                        enemy.health -= damage;
+                }
+                else if (fromTag == "enemy")
+                {
+                    PlayerController player = hit.collider.GetComponent<PlayerController>();
+                    if (player)
+                        player.health -= damage;
+                }
+            }
+
             Destroy(gameObject);
+            break;
         }
     }
 }
